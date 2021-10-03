@@ -1,0 +1,20 @@
+.header {
+  line-height: 1;
+  font-weight: 700;
+  margin: 2rem 0;
+  margin-bottom: 4rem;
+}
+.header-level-1 {
+  font-size: 8.5rem;
+  @media screen and (min-width: 600px) {
+    font-size: 12.5rem;
+  }
+}
+
+.header-level-2 {
+  font-size: 3.6rem;
+  @media screen and (min-width: 600px) {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+  }
+}
