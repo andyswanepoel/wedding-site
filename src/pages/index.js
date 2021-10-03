@@ -92,6 +92,8 @@ const IndexPage = () => {
           <a
             className={styles.airbnbLink}
             href="https://www.airbnb.ca/picton-prince-edward-canada/stays"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <StaticImage
               alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
