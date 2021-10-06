@@ -1,4 +1,4 @@
-const accomodations = [
+const accommodations = [
   {
     name: "Pictor Harbour Inn",
     promo: "katie&andy2022",
@@ -21,4 +21,4 @@ const accomodations = [
   }
 ];
 
-export default accomodations;
+export default accommodations;

@@ -1,35 +1,36 @@
-.accomodation-tile {
+.accommodation-tile {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 40rem;
   max-width: 90%;
-  height: 20rem;
+  height: 18em;
   margin: 3rem 0;
   padding: 2rem;
-  background: #705c50;
+  background: rgba(#705c50, 85%);
   border-radius: 2rem;
   box-shadow: 0 0 3.5em rgba(0, 0, 0, 0.6);
   @media screen and (min-width: 600px) {
     margin: 3rem;
+    height: 20rem;
   }
 }
 
-.accomodation-name,
-.accomodation-promo {
+.accommodation-name,
+.accommodation-promo {
   margin: 0;
 }
 
-.accomodation-name {
+.accommodation-name {
   font-size: 3rem;
   margin-bottom: auto;
 }
 
-.accomodation-promo {
+.accommodation-promo {
   font-size: 1.8rem;
 }
 
-.accomodation-link {
+.accommodation-link {
   text-decoration: none;
   width: 18rem;
   padding: 1.5rem;

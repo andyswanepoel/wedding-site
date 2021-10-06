@@ -6,12 +6,12 @@ import BackgroundImage from "gatsby-background-image";
 import ContentSection from "../components/ContentSection";
 import Header from "../components/Header";
 import FlexWrapper from "../components/FlexWrapper";
-import AccomodationTile from "../components/AccomodationTile";
+import AccommodationTile from "../components/AccommodationTile";
 
 import "../styles/base.scss";
 import * as styles from "../styles/index.module.scss";
 
-import accomodations from "../accomodations";
+import accommodations from "../accommodations";
 
 const IndexPage = () => {
   React.useEffect(() => {
@@ -68,7 +68,7 @@ const IndexPage = () => {
           <p>
             Picton and the surrounding area are very popular summer
             destinations. <br />
-            We recommend securing accomodation as soon as possible.
+            We recommend securing accommodations as soon as possible.
           </p>
           <p>Here are a few suggestions to get&nbsp;started!</p>
           <FlexWrapper
@@ -77,11 +77,11 @@ const IndexPage = () => {
             alignItems="center"
             flexWrap="wrap"
           >
-            {accomodations.map((accomodation) => (
-              <AccomodationTile
-                name={accomodation.name}
-                promo={accomodation.promo}
-                link={accomodation.link}
+            {accommodations.map((accommodation) => (
+              <AccommodationTile
+                name={accommodation.name}
+                promo={accommodation.promo}
+                link={accommodation.link}
               />
             ))}
           </FlexWrapper>
