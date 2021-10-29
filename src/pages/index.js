@@ -11,7 +11,7 @@ import AccommodationTile from "../components/AccommodationTile";
 import "../styles/base.scss";
 import * as styles from "../styles/index.module.scss";
 
-import accommodations from "../accommodations";
+import { picton, belleville } from "../accommodations";
 
 const IndexPage = () => {
   React.useEffect(() => {
@@ -71,13 +71,33 @@ const IndexPage = () => {
             We recommend securing accommodations as soon as possible.
           </p>
           <p>Here are a few suggestions to get&nbsp;started!</p>
+          <Header headingLevel="3" weight="400">
+            Prince Edward County
+          </Header>
           <FlexWrapper
             flexDirection="row"
             justifyContent="center"
             alignItems="center"
             flexWrap="wrap"
           >
-            {accommodations.map((accommodation) => (
+            {picton.map((accommodation) => (
+              <AccommodationTile
+                name={accommodation.name}
+                promo={accommodation.promo}
+                link={accommodation.link}
+              />
+            ))}
+          </FlexWrapper>
+          <Header headingLevel="3" weight="400">
+            Belleville
+          </Header>
+          <FlexWrapper
+            flexDirection="row"
+            justifyContent="center"
+            alignItems="center"
+            flexWrap="wrap"
+          >
+            {belleville.map((accommodation) => (
               <AccommodationTile
                 name={accommodation.name}
                 promo={accommodation.promo}
