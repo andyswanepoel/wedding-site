@@ -109,7 +109,7 @@ const IndexPage = () => {
             ))}
           </FlexWrapper>
           <p>
-            If hotels are not your thing, there are no shortages of Airbnb host
+            If hotels are not your thing, there are no shortage of Airbnb hosts
             in the area. Click on the link below to see your options.
           </p>
           <a
@@ -118,10 +118,7 @@ const IndexPage = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <StaticImage
-              alt="Clifford, a reddish-brown pitbull, posing on a couch and looking stoically at the camera"
-              src="../images/airbnb.png"
-            />
+            <StaticImage alt="Airbnb logo" src="../images/airbnb.png" />
           </a>
         </ContentSection>
       </BackgroundImage>
