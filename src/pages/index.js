@@ -74,9 +74,26 @@ const IndexPage = () => {
             We recommend securing accommodations as soon as possible.
           </p>
           <p>Here are a few suggestions to get&nbsp;started!</p>
+          <hr />
           <Header headingLevel="3" weight="400">
             Prince Edward County
           </Header>
+          <p>
+            There are no shortage of Airbnb hosts in the area. Click on the link
+            below to see your options.
+          </p>
+          <a
+            className={styles.airbnbLink}
+            href="https://www.airbnb.ca/picton-prince-edward-canada/stays"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <StaticImage alt="Airbnb logo" src="../images/airbnb.png" />
+          </a>
+          <p>
+            If you prefer hotels, the venue has suggested the follow as nearby
+            options.
+          </p>
           <FlexWrapper
             flexDirection="row"
             justifyContent="center"
@@ -108,18 +125,6 @@ const IndexPage = () => {
               />
             ))}
           </FlexWrapper>
-          <p>
-            If hotels are not your thing, there are no shortage of Airbnb hosts
-            in the area. Click on the link below to see your options.
-          </p>
-          <a
-            className={styles.airbnbLink}
-            href="https://www.airbnb.ca/picton-prince-edward-canada/stays"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <StaticImage alt="Airbnb logo" src="../images/airbnb.png" />
-          </a>
         </ContentSection>
       </BackgroundImage>
     </main>
