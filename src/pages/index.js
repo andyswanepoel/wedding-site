@@ -61,6 +61,9 @@ const IndexPage = () => {
         <p className={styles.eventDetails}>
           <span>Where:</span> Picton, ON
         </p>
+        <p className={styles.eventDetails}>
+          <span>Venue:</span> Cherryvale Weddings
+        </p>
         <ContentSection>
           <Header headingLevel="2" weight="400">
             Where to stay?
