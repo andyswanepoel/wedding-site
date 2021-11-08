@@ -53,7 +53,7 @@ const IndexPage = () => {
         backgroundColor={`#040e18`}
       >
         <Header headingLevel="1" color="white">
-          We're getting married!
+          Katie &amp; Andy are getting married!
         </Header>
         <p className={styles.eventDetails}>
           <span>When:</span> July 23, 2022
