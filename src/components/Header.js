@@ -5,13 +5,14 @@ const Header = ({
   headingLevel,
   color = "inherit",
   weight = "700",
-  children
+  children,
+  style
 }) => {
   const HeadingTag = `h${headingLevel}`;
 
   return (
     <HeadingTag
-      style={{ color, fontWeight: weight }}
+      style={{ ...style, color, fontWeight: weight }}
       className={`${styles.header} ${styles["headerLevel" + headingLevel]}`}
     >
       {children}

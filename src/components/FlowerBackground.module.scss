@@ -1,0 +1,17 @@
+.cover-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: "100%";
+  padding: 2rem;
+  background-position: "center center";
+  background-repeat: "no-repeat";
+  background-size: "cover";
+  background-attachment: fixed;
+  text-align: center;
+  color: white;
+  @media screen and (min-width: 600px) {
+    padding: 5rem;
+  }
+}

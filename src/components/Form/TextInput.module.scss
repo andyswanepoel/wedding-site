@@ -1,0 +1,40 @@
+.input-wrapper {
+  position: relative;
+  padding-bottom: 2rem;
+  &:not(:last-of-type) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.input-label,
+.input {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+.input-label {
+  padding-bottom: 0.8rem;
+}
+.input {
+  color: #6c6c6c;
+  padding: 0.5rem;
+  height: 3.5rem;
+  border: 0.1rem solid #5f5a5a;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  @media screen and (min-width: 600px) {
+    font-size: 1.8rem;
+  }
+}
+
+.input.input-error {
+  border-color: #e70707;
+}
+
+.input-error-message {
+  position: absolute;
+  bottom: 0;
+  color: #e70707;
+  margin: 0;
+  font-size: 1.6rem;
+}
