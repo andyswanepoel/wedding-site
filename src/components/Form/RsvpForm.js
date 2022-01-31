@@ -291,23 +291,25 @@ const RsvpForm = () => {
 
     const form = e.target;
 
+    console.log(attendingValue);
+
     const formValues = {
       "bot-field": botValue,
       name: nameValue,
       email: emailValue,
       attending: attendingValue,
-      "plus-one": attendingValue === "yes" && plusOne ? plusOneValue : "",
+      "plus-one": attendingValue === "yes" && plusOne ? plusOneValue : "n/a",
       "guest-name":
         attendingValue === "yes" && plusOneValue === "yes"
           ? guestNameValue
-          : "",
+          : "n/a",
       "dietary-needs": dietaryValue,
-      address1: attendingValue === "yes" ? address1Value : "",
+      address1: attendingValue === "yes" ? address1Value : "n/a",
       address2: address2Value,
-      city: attendingValue === "yes" ? cityValue : "",
-      state: attendingValue === "yes" ? stateValue : "",
-      zip: attendingValue === "yes" ? zipValue : "",
-      country: attendingValue === "yes" ? countryValue : ""
+      city: attendingValue === "yes" ? cityValue : "n/a",
+      state: attendingValue === "yes" ? stateValue : "n/a",
+      zip: attendingValue === "yes" ? zipValue : "n/a",
+      country: attendingValue === "yes" ? countryValue : "n/a"
     };
 
     fetch("/", {
