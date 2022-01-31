@@ -302,18 +302,18 @@ const RsvpForm = () => {
       name: nameValue,
       email: emailValue,
       attending: attendingValue,
-      "plus-one": attendingValue === "yes" && plusOne ? plusOneValue : "n/a",
+      "plus-one": attendingValue === "yes" && plusOne ? plusOneValue : "",
       "guest-name":
         attendingValue === "yes" && plusOneValue === "yes"
           ? guestNameValue
-          : "n/a",
+          : "",
       "dietary-needs": dietaryValue,
-      address1: attendingValue === "yes" ? address1Value : "n/a",
+      address1: attendingValue === "yes" ? address1Value : "",
       address2: address2Value,
-      city: attendingValue === "yes" ? cityValue : "n/a",
-      state: attendingValue === "yes" ? stateValue : "n/a",
-      zip: attendingValue === "yes" ? zipValue : "n/a",
-      country: attendingValue === "yes" ? countryValue : "n/a"
+      city: attendingValue === "yes" ? cityValue : "",
+      state: attendingValue === "yes" ? stateValue : "",
+      zip: attendingValue === "yes" ? zipValue : "",
+      country: attendingValue === "yes" ? countryValue : ""
     };
 
     fetch("/", {
