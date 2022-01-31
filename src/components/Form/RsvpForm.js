@@ -1,14 +1,16 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { navigate } from "gatsby-link";
 
 import * as styles from "./RsvpForm.module.scss";
+import ShellForm from "./ShellForm";
 import TextInput from "./TextInput";
 import RadioInput from "./RadioInput";
 import useQueryParams from "../../hooks/use-query-params";
 import useInput from "../../hooks/use-input";
 
 const RsvpForm = () => {
+  const [showShellForm, setShowShellForm] = useState(true);
   const [botValue, setBotValue] = useState("");
   const [plusOne] = useQueryParams("plus", true);
 
@@ -192,6 +194,10 @@ const RsvpForm = () => {
     }
   ]);
 
+  useEffect(() => {
+    setShowShellForm(false);
+  }, []);
+
   const encode = (data) => {
     return Object.keys(data)
       .map(
@@ -291,8 +297,6 @@ const RsvpForm = () => {
 
     const form = e.target;
 
-    console.log(attendingValue);
-
     const formValues = {
       "bot-field": botValue,
       name: nameValue,
@@ -384,6 +388,8 @@ const RsvpForm = () => {
           ]}
         />
       </fieldset>
+      {/* Need to include this to pick up the fields for the CSV */}
+      {showShellForm && <ShellForm />}
       {attendingValue === "yes" && plusOne === "true" && (
         <fieldset className={`${styles.fieldset__rsvp} ${styles.animate}`}>
           <legend className={styles.legend__rsvp}>
