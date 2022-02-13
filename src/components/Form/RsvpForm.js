@@ -12,7 +12,7 @@ import useInput from "../../hooks/use-input";
 const RsvpForm = () => {
   const [showShellForm, setShowShellForm] = useState(true);
   const [botValue, setBotValue] = useState("");
-  const [plusOne] = useQueryParams("plus", true);
+  const [plusOne] = useQueryParams("plusone", true);
   const [urlName] = useQueryParams("name", true);
   const [urlEmail] = useQueryParams("email", true);
 
