@@ -9,7 +9,8 @@ const TextInput = (
     invalid,
     errorMessage,
     valueChangeHandler,
-    inputBlurHandler
+    inputBlurHandler,
+    ...props
   },
   ref
 ) => {
@@ -22,7 +23,7 @@ const TextInput = (
     : {};
 
   return (
-    <div className={styles.inputWrapper}>
+    <div className={styles.inputWrapper} {...props}>
       <label className={styles.inputLabel} htmlFor={id}>
         {label}
       </label>

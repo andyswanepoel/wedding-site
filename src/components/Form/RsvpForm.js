@@ -13,6 +13,8 @@ const RsvpForm = () => {
   const [showShellForm, setShowShellForm] = useState(true);
   const [botValue, setBotValue] = useState("");
   const [plusOne] = useQueryParams("plus", true);
+  const [urlName] = useQueryParams("name", true);
+  const [urlEmail] = useQueryParams("email", true);
 
   const [
     nameValue,
@@ -22,7 +24,7 @@ const RsvpForm = () => {
     nameErrorMessage,
     nameValueChangeHandler,
     nameInputBlurHandler
-  ] = useInput([
+  ] = useInput(urlName, [
     {
       test: (value) => value.trim() !== "",
       error: "Please enter your name."
@@ -37,7 +39,7 @@ const RsvpForm = () => {
     emailErrorMessage,
     emailValueChangeHandler,
     emailInputBlurHandler
-  ] = useInput([
+  ] = useInput(urlEmail, [
     {
       test: (value) => value.trim() !== "",
       error: "Please enter your email."
@@ -62,7 +64,7 @@ const RsvpForm = () => {
     attendingErrorMessage,
     attendingValueChangeHandler,
     attendingInputBlurHandler
-  ] = useInput([
+  ] = useInput("", [
     {
       test: (value) => value.trim() !== "",
       error: "Please select an option."
@@ -76,7 +78,7 @@ const RsvpForm = () => {
     plusOneErrorMessage,
     plusOneValueChangeHandler,
     plusOneInputBlurHandler
-  ] = useInput([
+  ] = useInput("", [
     {
       test: (value) => value.trim() !== "",
       error: "Please select an option."
@@ -91,7 +93,7 @@ const RsvpForm = () => {
     guestNameErrorMessage,
     guestNameValueChangeHandler,
     guestNameInputBlurHandler
-  ] = useInput([
+  ] = useInput("", [
     {
       test: (value) => value.trim() !== "",
       error: "Please enter your guest's name."
@@ -106,7 +108,7 @@ const RsvpForm = () => {
     dietaryErrorMessage,
     dietaryValueChangeHandler,
     dietaryInputBlurHandler
-  ] = useInput();
+  ] = useInput("", []);
 
   // Address Info
   const [
@@ -117,7 +119,7 @@ const RsvpForm = () => {
     address1ErrorMessage,
     address1ValueChangeHandler,
     address1InputBlurHandler
-  ] = useInput([
+  ] = useInput("", [
     {
       test: (value) => value.trim() !== "",
       error: "Please enter your address."
@@ -132,7 +134,7 @@ const RsvpForm = () => {
     address2ErrorMessage,
     address2ValueChangeHandler,
     address2InputBlurHandler
-  ] = useInput([]);
+  ] = useInput("", []);
 
   const [
     cityValue,
@@ -142,7 +144,7 @@ const RsvpForm = () => {
     cityErrorMessage,
     cityValueChangeHandler,
     cityInputBlurHandler
-  ] = useInput([
+  ] = useInput("", [
     {
       test: (value) => value.trim() !== "",
       error: "Please enter your city."
@@ -157,7 +159,7 @@ const RsvpForm = () => {
     stateErrorMessage,
     stateValueChangeHandler,
     stateInputBlurHandler
-  ] = useInput([
+  ] = useInput("", [
     {
       test: (value) => value.trim() !== "",
       error: "Please enter your state or provice."
@@ -172,7 +174,7 @@ const RsvpForm = () => {
     zipErrorMessage,
     zipValueChangeHandler,
     zipInputBlurHandler
-  ] = useInput([
+  ] = useInput("", [
     {
       test: (value) => value.trim() !== "",
       error: "Please enter your ZIP or postal code."
@@ -187,7 +189,7 @@ const RsvpForm = () => {
     countryErrorMessage,
     countryValueChangeHandler,
     countryInputBlurHandler
-  ] = useInput([
+  ] = useInput("", [
     {
       test: (value) => value.trim() !== "",
       error: "Please enter your country."
@@ -224,9 +226,10 @@ const RsvpForm = () => {
     ];
 
     // If you are attending and have a plus one option, that field is required
-    if (attendingValue === "yes" && plusOne) {
+    if (attendingValue === "yes" && plusOne === "true") {
       inputs.push({
         valid: plusOneValueValid,
+        thing: "plusOne",
         ref: plusOneInputRef
       });
     }
@@ -234,11 +237,12 @@ const RsvpForm = () => {
     if (attendingValue === "yes" && plusOneValue === "yes") {
       inputs.push({
         valid: guestNameValueValid,
+        thing: "guestName",
         ref: guestNameInputRef
       });
     }
 
-    // If the guest is attending, we require address and dietary info
+    // If the guest is attending, we require address infos
     if (attendingValue === "yes") {
       inputs.push(
         {
@@ -324,7 +328,12 @@ const RsvpForm = () => {
         ...formValues
       })
     })
-      .then(() => navigate("/", { state: { showThankYou: true } }))
+      .then(() => {
+        ["plus", "name", "email"].forEach((item) =>
+          localStorage.removeItem(item)
+        );
+        navigate("/", { state: { showThankYou: true } });
+      })
       .catch((error) => alert(error));
   };
 
@@ -417,6 +426,7 @@ const RsvpForm = () => {
               valueChangeHandler={guestNameValueChangeHandler}
               inputBlurHandler={guestNameInputBlurHandler}
               ref={guestNameInputRef}
+              className={styles.animate}
             />
           )}
         </fieldset>

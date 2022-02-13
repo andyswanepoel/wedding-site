@@ -1,7 +1,7 @@
 import * as React from "react";
-import * as styles from "./Header.module.scss";
+import * as styles from "./Heading.module.scss";
 
-const Header = ({
+const Heading = ({
   headingLevel,
   color = "inherit",
   weight = "700",
@@ -13,11 +13,11 @@ const Header = ({
   return (
     <HeadingTag
       style={{ ...style, color, fontWeight: weight }}
-      className={`${styles.header} ${styles["headerLevel" + headingLevel]}`}
+      className={`${styles.heading} ${styles["headingLevel" + headingLevel]}`}
     >
       {children}
     </HeadingTag>
   );
 };
 
-export default Header;
+export default Heading;

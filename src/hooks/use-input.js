@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import { useRef, useState } from "react";
 
-const useInput = (validations = []) => {
+const useInput = (defaultValue = "", validations = []) => {
   const [value, setValue] = useState("");
   const [interacted, setInteracted] = useState(false);
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (!!defaultValue) {
+      setValue(defaultValue);
+    }
+  }, [defaultValue]);
 
   const valueValid = validations.every((validation) => validation.test(value));
   const inputInvalid = interacted && !valueValid;

@@ -21,7 +21,7 @@ module.exports = {
       options: {
         name: "Swandry Wedding",
         short_name: "Swandry Wedding",
-        icon: "src/images/swandry.png",
+        icon: "src/images/icon.png",
         start_url: "/",
         background_color: "#242a2c",
         theme_color: "#675447",
