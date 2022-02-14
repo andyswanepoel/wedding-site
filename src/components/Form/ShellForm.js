@@ -3,6 +3,7 @@ import * as React from "react";
 const ShellForm = () => {
   return (
     <div>
+      <input type="radio" name="number-of-guests" />
       <input type="radio" name="plus-one" />
       <input type="text" name="guest-name" />
       <input type="text" name="dietary-needs" />

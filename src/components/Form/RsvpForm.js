@@ -16,6 +16,8 @@ const RsvpForm = () => {
   const [urlName] = useQueryParams("name", true);
   const [urlEmail] = useQueryParams("email", true);
 
+  const [showNumberOfGuests, setShowNumberOfGuests] = useState(false);
+
   const [
     nameValue,
     nameInputRef,
@@ -70,6 +72,7 @@ const RsvpForm = () => {
       error: "Please select an option."
     }
   ]);
+
   const [
     plusOneValue,
     plusOneInputRef,
@@ -78,6 +81,21 @@ const RsvpForm = () => {
     plusOneErrorMessage,
     plusOneValueChangeHandler,
     plusOneInputBlurHandler
+  ] = useInput("", [
+    {
+      test: (value) => value.trim() !== "",
+      error: "Please select an option."
+    }
+  ]);
+
+  const [
+    numberOfGuestsValue,
+    numberOfGuestsInputRef,
+    numberOfGuestsValueValid,
+    numberOfGuestsInputInvalid,
+    numberOfGuestsErrorMessage,
+    numberOfGuestsValueChangeHandler,
+    numberOfGuestsInputBlurHandler
   ] = useInput("", [
     {
       test: (value) => value.trim() !== "",
@@ -200,6 +218,12 @@ const RsvpForm = () => {
     setShowShellForm(false);
   }, []);
 
+  useEffect(() => {
+    if (!!urlName) {
+      setShowNumberOfGuests(urlName.split(" ").includes("and"));
+    }
+  }, [urlName]);
+
   const encode = (data) => {
     return Object.keys(data)
       .map(
@@ -226,10 +250,17 @@ const RsvpForm = () => {
     ];
 
     // If you are attending and have a plus one option, that field is required
+    if (attendingValue === "yes" && showNumberOfGuests === true) {
+      inputs.push({
+        valid: numberOfGuestsValueValid,
+        ref: numberOfGuestsInputRef
+      });
+    }
+
+    // If you are attending and have a plus one option, that field is required
     if (attendingValue === "yes" && plusOne === "true") {
       inputs.push({
         valid: plusOneValueValid,
-        thing: "plusOne",
         ref: plusOneInputRef
       });
     }
@@ -237,7 +268,6 @@ const RsvpForm = () => {
     if (attendingValue === "yes" && plusOneValue === "yes") {
       inputs.push({
         valid: guestNameValueValid,
-        thing: "guestName",
         ref: guestNameInputRef
       });
     }
@@ -284,6 +314,9 @@ const RsvpForm = () => {
     attendingInputBlurHandler();
 
     // These fields depend on other selections
+    if (attendingValue === "yes" && showNumberOfGuests === true)
+      numberOfGuestsInputBlurHandler();
+
     if (attendingValue === "yes" && plusOne) plusOneInputBlurHandler();
 
     if (attendingValue === "yes" && plusOneValue === "yes")
@@ -306,6 +339,10 @@ const RsvpForm = () => {
       name: nameValue,
       email: emailValue,
       attending: attendingValue,
+      "number-of-guests":
+        attendingValue === "yes" && showNumberOfGuests === true
+          ? numberOfGuestsValue
+          : "",
       "plus-one": attendingValue === "yes" && plusOne ? plusOneValue : "",
       "guest-name":
         attendingValue === "yes" && plusOneValue === "yes"
@@ -399,6 +436,30 @@ const RsvpForm = () => {
       </fieldset>
       {/* Need to include this to pick up the fields for the CSV */}
       {showShellForm && <ShellForm />}
+      {/* If they're attending and have multiple people in the party */}
+      {attendingValue === "yes" && showNumberOfGuests === true && (
+        <fieldset className={`${styles.fieldset__rsvp} ${styles.animate}`}>
+          <legend className={styles.legend__rsvp}>
+            How many guests will be attending from your group?
+          </legend>
+          <RadioInput
+            invalid={numberOfGuestsInputInvalid}
+            errorMessage={numberOfGuestsErrorMessage}
+            valueChangeHandler={numberOfGuestsValueChangeHandler}
+            inputBlurHandler={numberOfGuestsInputBlurHandler}
+            ref={numberOfGuestsInputRef}
+            name="number-of-guests"
+            options={[
+              {
+                id: "number-of-guests__one",
+                label: "One",
+                value: "one"
+              },
+              { id: "number-of-guests__two", label: "Two", value: "two" }
+            ]}
+          />
+        </fieldset>
+      )}
       {attendingValue === "yes" && plusOne === "true" && (
         <fieldset className={`${styles.fieldset__rsvp} ${styles.animate}`}>
           <legend className={styles.legend__rsvp}>
