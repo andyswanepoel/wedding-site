@@ -45,3 +45,10 @@ hr {
     text-decoration: underline;
   }
 }
+
+.font-lg {
+  font-size: 2.2rem;
+  @media screen and (min-width: 600px) {
+    font-size: 2.6rem;
+  }
+}
