@@ -1,9 +1,12 @@
 /* The alert message box */
 .notification {
   position: relative;
-  padding: 2rem 3rem;
+  padding: 2rem 6rem;
   text-align: center;
   font-family: "Lato", sans-serif;
+  @media screen and (min-width: 600px) {
+    padding: 2rem 3rem;
+  }
   &.success {
     color: #155724;
     background-color: #d4edd9;
