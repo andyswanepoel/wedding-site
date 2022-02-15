@@ -7,16 +7,27 @@ import Heading from "../components/Heading";
 import FlexWrapper from "../components/FlexWrapper";
 import AccommodationTile from "../components/AccommodationTile";
 import Header from "../components/Navigation/Header";
+import Notification from "../components/Notification/Notification";
 
 import "../styles/base.scss";
 import * as styles from "../styles/index.module.scss";
 
 import { picton, belleville } from "../accommodations";
 
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
+  console.log(location.state?.notification);
+  const message = location.state?.notification?.message;
+  const type = location.state?.notification?.type;
+  const closeRedirect = location.state?.notification?.closeRedirect;
+
   return (
     <>
       <Header />
+      <Notification
+        message={message}
+        type={type}
+        closeRedirect={closeRedirect}
+      />
       <main>
         <title>Swandry Wedding</title>
         <FlowerBackground>

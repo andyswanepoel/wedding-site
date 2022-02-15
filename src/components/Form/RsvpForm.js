@@ -249,7 +249,7 @@ const RsvpForm = () => {
       }
     ];
 
-    // If you are attending and have a plus one option, that field is required
+    // If you are attending and have multiple guests, that field is required
     if (attendingValue === "yes" && showNumberOfGuests === true) {
       inputs.push({
         valid: numberOfGuestsValueValid,
@@ -369,9 +369,31 @@ const RsvpForm = () => {
         ["plus", "name", "email"].forEach((item) =>
           localStorage.removeItem(item)
         );
-        navigate("/", { state: { showThankYou: true } });
+        navigate("/", {
+          state: {
+            notification: {
+              message: `Thank you for your RSVP! ${
+                attendingValue === "yes"
+                  ? "We're so happy you can join us!"
+                  : "We're sorry you're unable to join us."
+              }`,
+              type: `${attendingValue === "yes" ? "success" : "warn"}`,
+              closeRedirect: "/"
+            }
+          }
+        });
       })
-      .catch((error) => alert(error));
+      .catch(() => {
+        navigate("/", {
+          state: {
+            notification: {
+              message: "Something went wrong with your RSVP! Please try again.",
+              type: "error",
+              closeRedirect: "/"
+            }
+          }
+        });
+      });
   };
 
   return (
