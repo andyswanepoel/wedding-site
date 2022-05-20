@@ -1,6 +1,6 @@
 # Wedding Website
 
-## Phase 1 (current phase)
+## Phase 1
 
 Phase 1 of the site will be a small splash page with the immediate details.
 
