@@ -31,7 +31,7 @@ const RsvpPage = () => {
               <strong className="font-lg">Where:</strong> Cherryvale Weddings,
               Picton,&nbsp;ON
             </p>
-            <p>Please respond by May 23, 2022.</p>
+            <p>Please respond by June 13, 2022, even if you can't make it.</p>
             <RsvpForm />
           </ContentSection>
         </FlowerBackground>
